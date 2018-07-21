@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		251D6D162103E68A00BA961A /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251D6D152103E68A00BA961A /* Okta.plist */; };
 		5035F2FD7BDB64B0FDD10DAC /* Pods_MapboxSceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84020DDE292950C59B1BA25A /* Pods_MapboxSceneKit.framework */; };
 		81293BEC20B4A1FB0014A17A /* MapboxSceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A436BC20A1F68500F42A53 /* MapboxSceneKit.framework */; };
 		81293BF120B4A29C0014A17A /* MapboxSceneKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 81A436BC20A1F68500F42A53 /* MapboxSceneKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -58,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		251D6D152103E68A00BA961A /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
 		286F50FD55793F1D7AB065D6 /* Pods-MapboxSceneKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxSceneKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapboxSceneKit/Pods-MapboxSceneKit.release.xcconfig"; sourceTree = "<group>"; };
 		3751C161423DA9566BF415EE /* Pods-MapboxSceneKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxSceneKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapboxSceneKit/Pods-MapboxSceneKit.debug.xcconfig"; sourceTree = "<group>"; };
 		48F8BCA7E62E5ACE810E7721 /* Pods-Examples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				81293BCF20B4A1AE0014A17A /* Main.storyboard */,
 				81293BD420B4A1AE0014A17A /* Info.plist */,
 				F44BB60220C75CBF00CE41C6 /* Examples-Bridging-Header.h */,
+				251D6D152103E68A00BA961A /* Okta.plist */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				8190076020C07FD5002F23C3 /* LaunchScreen.storyboard in Resources */,
 				8190076220C07FDA002F23C3 /* Assets.xcassets in Resources */,
 				8190076120C07FD7002F23C3 /* Main.storyboard in Resources */,
+				251D6D162103E68A00BA961A /* Okta.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
