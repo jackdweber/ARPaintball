@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="erI-O9-MIq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--AR-->
+        <scene sceneID="3Id-kf-3hg">
+            <objects>
+                <viewController id="LGO-U1-K7T" customClass="DemoARViewController" customModule="Examples" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CBl-UA-v5T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" wantsMultisampling="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6cv-23-bA9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LGO-U1-K7T" id="cRu-Je-MhR"/>
+                                </connections>
+                            </arscnView>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdL-ql-asQ">
+                                <rect key="frame" x="37.5" y="531" width="300" height="52"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="C07-bM-q8I">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is some text in a label how are you all doing right now pretty good I hope" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K26-fL-DQS">
+                                            <rect key="frame" x="8" y="8" width="284" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="K26-fL-DQS" secondAttribute="trailing" constant="8" id="9gM-SR-9Ix"/>
+                                        <constraint firstAttribute="bottom" secondItem="K26-fL-DQS" secondAttribute="bottom" constant="8" id="F87-5D-uB5"/>
+                                        <constraint firstItem="K26-fL-DQS" firstAttribute="leading" secondItem="C07-bM-q8I" secondAttribute="leading" constant="8" id="IcG-4d-fGI"/>
+                                        <constraint firstItem="K26-fL-DQS" firstAttribute="top" secondItem="C07-bM-q8I" secondAttribute="top" constant="8" id="mwA-V5-kmm"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="fQD-4t-uXk"/>
+                                </constraints>
+                                <blurEffect style="regular"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Move iPhone" translatesAutoresizingMaskIntoConstraints="NO" id="Jhx-jZ-QaO">
+                                <rect key="frame" x="150.5" y="273.5" width="74" height="120"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ImG-VX-8sM">
+                                <rect key="frame" x="163.5" y="603" width="48" height="48"/>
+                                <state key="normal" image="Place"/>
+                                <connections>
+                                    <action selector="place:" destination="LGO-U1-K7T" eventType="touchUpInside" id="z1M-eJ-1xV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GGZ-Ea-BK9" firstAttribute="bottom" secondItem="ImG-VX-8sM" secondAttribute="bottom" constant="16" id="5pE-oA-FKe"/>
+                            <constraint firstItem="Jhx-jZ-QaO" firstAttribute="centerX" secondItem="6cv-23-bA9" secondAttribute="centerX" id="7hq-RE-2xD"/>
+                            <constraint firstAttribute="trailing" secondItem="6cv-23-bA9" secondAttribute="trailing" id="Kh0-oe-3vi"/>
+                            <constraint firstItem="Jhx-jZ-QaO" firstAttribute="centerY" secondItem="6cv-23-bA9" secondAttribute="centerY" id="Mzj-aT-4ka"/>
+                            <constraint firstItem="ImG-VX-8sM" firstAttribute="centerX" secondItem="GGZ-Ea-BK9" secondAttribute="centerX" id="NYR-oU-VDk"/>
+                            <constraint firstAttribute="bottom" secondItem="6cv-23-bA9" secondAttribute="bottom" id="TGk-4N-Vvr"/>
+                            <constraint firstItem="6cv-23-bA9" firstAttribute="top" secondItem="CBl-UA-v5T" secondAttribute="top" id="VxW-Eq-JXP"/>
+                            <constraint firstItem="GGZ-Ea-BK9" firstAttribute="bottom" secondItem="bdL-ql-asQ" secondAttribute="bottom" constant="84" id="b12-nF-qi0"/>
+                            <constraint firstItem="6cv-23-bA9" firstAttribute="leading" secondItem="CBl-UA-v5T" secondAttribute="leading" id="eAn-OM-56g"/>
+                            <constraint firstItem="bdL-ql-asQ" firstAttribute="centerX" secondItem="GGZ-Ea-BK9" secondAttribute="centerX" id="fU3-lU-Gdd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GGZ-Ea-BK9"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="AR" id="WvQ-IQ-jj7"/>
+                    <connections>
+                        <outlet property="arView" destination="6cv-23-bA9" id="Zzl-0K-t2f"/>
+                        <outlet property="messageLabel" destination="K26-fL-DQS" id="I5d-rH-oFb"/>
+                        <outlet property="messageView" destination="bdL-ql-asQ" id="c2c-4V-eZO"/>
+                        <outlet property="moveImage" destination="Jhx-jZ-QaO" id="BFd-pG-DJN"/>
+                        <outlet property="placeButton" destination="ImG-VX-8sM" id="dv8-mL-1vZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J2m-U8-61f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16.800000000000001" y="-267.61619190404798"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lUX-Im-y7c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="erI-O9-MIq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bhO-b4-xLF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LGO-U1-K7T" kind="relationship" relationship="rootViewController" id="wlx-x4-5tW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1b-16-pnm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-922.39999999999998" y="-267.61619190404798"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Move iPhone" width="74" height="120"/>
+        <image name="Place" width="48" height="48"/>
+    </resources>
+</document>
