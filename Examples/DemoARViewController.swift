@@ -19,11 +19,16 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     private weak var terrain: SCNNode?
     private var planes: [UUID: SCNNode] = [UUID: SCNNode]()
     
-    var terrainNode = TerrainNode(minLat: 50.044660402821592, maxLat: 50.120873988090956,
-                                      minLon: -122.99017089272466, maxLon: -122.86824490727534)
+    //[[[-94.5979983667,39.092684077],[-94.5678816825,39.092684077],[-94.5678816825,39.1112113279],[-94.5979983667,39.1112113279],[-94.5979983667,39.092684077]]]
+    var cityCoords = (-113.765091,35.659519,-113.210661,36.008892)
+    var cityName = "Kansas City"
+    var terrainNode = TerrainNode(minLat: 39.092684077, maxLat: 39.1112113279,
+                                      minLon: -94.5979983667, maxLon: -94.5678816825)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        terrainNode = TerrainNode(minLat: cityCoords.1, maxLat: cityCoords.3, minLon: cityCoords.0, maxLon: cityCoords.2)
         
         guessButton.isEnabled = false
 
@@ -104,7 +109,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
             NSLog("Terrain load complete")
         })
 
-        terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: 14, progress: { _, _ in }, completion: { image in
+        terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: 17, progress: { _, _ in }, completion: { image in
             NSLog("Texture load complete")
             self.terrainNode.geometry?.materials[4].diffuse.contents = image
             self.messageView?.isHidden = true
