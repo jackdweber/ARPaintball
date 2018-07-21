@@ -19,6 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     @IBOutlet weak var sendMapButton: UIButton!
     @IBOutlet weak var mappingStatusLabel: UILabel!
     
+    var cameraTransform: simd_float4x4!
     // MARK: - View Life Cycle
     
     var multipeerSession: MultipeerSession!
@@ -92,6 +93,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         }
         mappingStatusLabel.text = frame.worldMappingStatus.description
         updateSessionInfoLabel(for: frame, trackingState: frame.camera.trackingState)
+        
+        //Find camera info
+        cameraTransform = frame.camera.transform
+        
     }
     
     // MARK: - ARSessionObserver
@@ -128,7 +133,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             else { return }
         
         // Place an anchor for a virtual character. The model appears in renderer(_:didAdd:for:).
-        let anchor = ARAnchor(name: "panda", transform: hitTestResult.worldTransform)
+        let anchor = ARAnchor(name: "panda", transform: cameraTransform)
         sceneView.session.add(anchor: anchor)
         
         // Send the anchor info to peers, so they can place the same content.
