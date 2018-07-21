@@ -46,7 +46,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         
         // Start the view's AR session.
         let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
+        configuration.planeDetection = [.horizontal, .vertical]
         sceneView.session.run(configuration)
         
         // Set a delegate to track the number of plane anchors for providing UI feedback.
@@ -56,7 +56,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         // Prevent the screen from being dimmed after a while as users will likely
         // have long periods of interaction without touching the screen or buttons.
         UIApplication.shared.isIdleTimerDisabled = true
-        
+        displayViewfinderOverlay()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -235,6 +235,26 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         referenceNode.load()
         
         return referenceNode
+    }
+    
+    func displayViewfinderOverlay() {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: view.frame.width * 0.25, y: view.frame.height/2))
+        path.addLine(to: CGPoint(x: view.frame.width * 0.75, y: view.frame.height/2))
+        
+        path.move(to: CGPoint(x: view.frame.width/2, y: view.frame.height * 0.25))
+        path.addLine(to: CGPoint(x: view.frame.width/2, y: view.frame.height * 0.75))
+        
+        let circle = UIBezierPath(arcCenter: CGPoint(x: view.frame.width/2, y: view.frame.height/2), radius: view.frame.height * 0.1, startAngle: 0, endAngle: 360, clockwise: true)
+        
+        path.append(circle)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.blue.cgColor
+        shapeLayer.lineWidth = 2.0
+        shapeLayer.opacity = 0.2
+        view.layer.insertSublayer(shapeLayer, at: 1)
     }
 }
 
