@@ -71,7 +71,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let name = anchor.name, name.hasPrefix("panda") {
-            node.addChildNode(loadRedPandaModel())
+            let nodeToAdd = loadRedPandaModel()
+            let action = SCNAction.move(by: SCNVector3(0, 0.1, 0), duration: 10)
+            nodeToAdd.runAction(action)
+            node.addChildNode(nodeToAdd)
         }
     }
     
