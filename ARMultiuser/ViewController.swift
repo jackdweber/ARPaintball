@@ -72,9 +72,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let name = anchor.name, name.hasPrefix("panda") {
             let nodeToAdd = loadRedPandaModel()
-            let action = SCNAction.move(by: SCNVector3(0, 0.1, 0), duration: 10)
-            nodeToAdd.runAction(action)
+            let action = SCNAction.move(by: SCNVector3(0, 0.1, 0), duration: 100)
             node.addChildNode(nodeToAdd)
+            nodeToAdd.runAction(action)
+            
         }
     }
     
@@ -93,6 +94,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             sendMapButton.isEnabled = !multipeerSession.connectedPeers.isEmpty
         case .mapped:
             sendMapButton.isEnabled = !multipeerSession.connectedPeers.isEmpty
+            autoShareSession()
+            
         }
         mappingStatusLabel.text = frame.worldMappingStatus.description
         updateSessionInfoLabel(for: frame, trackingState: frame.camera.trackingState)
@@ -147,6 +150,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     /// - Tag: GetWorldMap
     @IBAction func shareSession(_ button: UIButton) {
+        sceneView.session.getCurrentWorldMap { worldMap, error in
+            guard let map = worldMap
+                else { print("Error: \(error!.localizedDescription)"); return }
+            guard let data = try? NSKeyedArchiver.archivedData(withRootObject: map, requiringSecureCoding: true)
+                else { fatalError("can't encode map") }
+            self.multipeerSession.sendToAllPeers(data)
+        }
+    }
+    
+    func autoShareSession(){
         sceneView.session.getCurrentWorldMap { worldMap, error in
             guard let map = worldMap
                 else { print("Error: \(error!.localizedDescription)"); return }
