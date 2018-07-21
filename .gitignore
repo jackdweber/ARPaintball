@@ -8,3 +8,5 @@ MapboxSceneKit\.xcodeproj/xcuserdata/
 \.DS_Store
 
 Carthage/Build/
+
+Pods/

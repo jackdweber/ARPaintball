@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5035F2FD7BDB64B0FDD10DAC /* Pods_MapboxSceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84020DDE292950C59B1BA25A /* Pods_MapboxSceneKit.framework */; };
 		81293BEC20B4A1FB0014A17A /* MapboxSceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A436BC20A1F68500F42A53 /* MapboxSceneKit.framework */; };
 		81293BF120B4A29C0014A17A /* MapboxSceneKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 81A436BC20A1F68500F42A53 /* MapboxSceneKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81293BF720B4A35C0014A17A /* ProgressCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81293BCB20B4A1AE0014A17A /* ProgressCompositor.swift */; };
@@ -29,6 +30,7 @@
 		81A4372520A243E100F42A53 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A4372420A243E100F42A53 /* AsyncOperation.swift */; };
 		81A4372A20A2444B00F42A53 /* HTTPRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A4372920A2444B00F42A53 /* HTTPRequestOperation.swift */; };
 		81CCF68720AA99CD00194B22 /* CGExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CCF68620AA99CD00194B22 /* CGExtensions.swift */; };
+		B75047A6C8FC78DB489BF816 /* Pods_Examples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FEED91990C346FF819144D /* Pods_Examples.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		286F50FD55793F1D7AB065D6 /* Pods-MapboxSceneKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxSceneKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapboxSceneKit/Pods-MapboxSceneKit.release.xcconfig"; sourceTree = "<group>"; };
+		3751C161423DA9566BF415EE /* Pods-MapboxSceneKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxSceneKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapboxSceneKit/Pods-MapboxSceneKit.debug.xcconfig"; sourceTree = "<group>"; };
+		48F8BCA7E62E5ACE810E7721 /* Pods-Examples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.release.xcconfig"; sourceTree = "<group>"; };
 		81293BCB20B4A1AE0014A17A /* ProgressCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCompositor.swift; sourceTree = "<group>"; };
 		81293BCC20B4A1AE0014A17A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81293BCE20B4A1AE0014A17A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +84,9 @@
 		81A4372420A243E100F42A53 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		81A4372920A2444B00F42A53 /* HTTPRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestOperation.swift; sourceTree = "<group>"; };
 		81CCF68620AA99CD00194B22 /* CGExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGExtensions.swift; sourceTree = "<group>"; };
+		84020DDE292950C59B1BA25A /* Pods_MapboxSceneKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapboxSceneKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A9CBD56618F963B99AAF80 /* Pods-Examples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.debug.xcconfig"; sourceTree = "<group>"; };
+		E1FEED91990C346FF819144D /* Pods_Examples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Examples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44BB60220C75CBF00CE41C6 /* Examples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Examples-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +97,7 @@
 			files = (
 				81293BFF20B4B3D20014A17A /* MapboxMobileEvents.framework in Frameworks */,
 				81293BEC20B4A1FB0014A17A /* MapboxSceneKit.framework in Frameworks */,
+				B75047A6C8FC78DB489BF816 /* Pods_Examples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81293C0120B4B4010014A17A /* MapboxMobileEvents.framework in Frameworks */,
+				5035F2FD7BDB64B0FDD10DAC /* Pods_MapboxSceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				81293BFD20B4B3C10014A17A /* MapboxMobileEvents.framework */,
+				E1FEED91990C346FF819144D /* Pods_Examples.framework */,
+				84020DDE292950C59B1BA25A /* Pods_MapboxSceneKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,6 +156,7 @@
 				81A436BE20A1F68500F42A53 /* MapboxSceneKit */,
 				81A436BD20A1F68500F42A53 /* Products */,
 				81293BEB20B4A1FB0014A17A /* Frameworks */,
+				AC31C458645DC1FA82F9EBB9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +194,17 @@
 			path = "Tile Fetching";
 			sourceTree = "<group>";
 		};
+		AC31C458645DC1FA82F9EBB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4A9CBD56618F963B99AAF80 /* Pods-Examples.debug.xcconfig */,
+				48F8BCA7E62E5ACE810E7721 /* Pods-Examples.release.xcconfig */,
+				3751C161423DA9566BF415EE /* Pods-MapboxSceneKit.debug.xcconfig */,
+				286F50FD55793F1D7AB065D6 /* Pods-MapboxSceneKit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -199,12 +223,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81293BE820B4A1C90014A17A /* Build configuration list for PBXNativeTarget "Examples" */;
 			buildPhases = (
+				54C58A022EC18CA2B54FFF4B /* [CP] Check Pods Manifest.lock */,
 				81293BD520B4A1C80014A17A /* Sources */,
 				81293BD620B4A1C80014A17A /* Frameworks */,
 				81293BD720B4A1C80014A17A /* Resources */,
 				81293BF220B4A29D0014A17A /* Embed Frameworks */,
 				81293BFC20B4B3270014A17A /* Copy Carthage Dependencies */,
 				81293BFA20B4A8860014A17A /* Apply Mapbox Access Token */,
+				E78B27E94AD889EC50B90153 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +246,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81A436C420A1F68500F42A53 /* Build configuration list for PBXNativeTarget "MapboxSceneKit" */;
 			buildPhases = (
+				89652EE87BF28F0DB95264DF /* [CP] Check Pods Manifest.lock */,
 				81A436B720A1F68500F42A53 /* Sources */,
 				81A436B820A1F68500F42A53 /* Frameworks */,
 				81A436B920A1F68500F42A53 /* Headers */,
@@ -294,6 +321,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		54C58A022EC18CA2B54FFF4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Examples-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		81293BFA20B4A8860014A17A /* Apply Mapbox Access Token */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +371,50 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		89652EE87BF28F0DB95264DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MapboxSceneKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E78B27E94AD889EC50B90153 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Examples/Pods-Examples-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/HydraAsync/Hydra.framework",
+				"${BUILT_PRODUCTS_DIR}/OktaAuth/OktaAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/OktaJWT/OktaJWT.framework",
+				"${BUILT_PRODUCTS_DIR}/Vinculum/Vinculum.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hydra.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OktaAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OktaJWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Vinculum.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Examples/Pods-Examples-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -390,12 +479,13 @@
 /* Begin XCBuildConfiguration section */
 		81293BE920B4A1C90014A17A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4A9CBD56618F963B99AAF80 /* Pods-Examples.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PS9CT7L6JZ;
+				DEVELOPMENT_TEAM = V487Z33HP5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -406,7 +496,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hackmidwest.arguesser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.armatey.arguesser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Examples/Examples-Bridging-Header.h";
@@ -418,12 +508,13 @@
 		};
 		81293BEA20B4A1C90014A17A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F8BCA7E62E5ACE810E7721 /* Pods-Examples.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PS9CT7L6JZ;
+				DEVELOPMENT_TEAM = V487Z33HP5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -434,7 +525,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hackmidwest.arguesser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.armatey.arguesser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Examples/Examples-Bridging-Header.h";
@@ -565,12 +656,13 @@
 		};
 		81A436C520A1F68500F42A53 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3751C161423DA9566BF415EE /* Pods-MapboxSceneKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = PS9CT7L6JZ;
+				DEVELOPMENT_TEAM = V487Z33HP5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -597,12 +689,13 @@
 		};
 		81A436C620A1F68500F42A53 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 286F50FD55793F1D7AB065D6 /* Pods-MapboxSceneKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = PS9CT7L6JZ;
+				DEVELOPMENT_TEAM = V487Z33HP5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
