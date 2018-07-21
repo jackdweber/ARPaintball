@@ -1,2 +1,10 @@
 
 ARMultiuser\.xcodeproj/project\.xcworkspace/xcuserdata/andrew\.xcuserdatad/UserInterfaceState\.xcuserstate
+
+MapboxSceneKit\.xcodeproj/project\.xcworkspace/xcuserdata/
+
+MapboxSceneKit\.xcodeproj/xcuserdata/
+
+\.DS_Store
+
+Carthage/Build/
