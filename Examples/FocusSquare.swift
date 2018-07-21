@@ -9,7 +9,7 @@ import ARKit
 class FocusSquare: SCNNode {
 
     // Original size of the focus square in m.
-    private let focusSquareSize: Float = 0.17
+    private let focusSquareSize: Float = 0.30
 
     // Thickness of the focus square lines in m.
     private let focusSquareThickness: Float = 0.018
@@ -24,8 +24,8 @@ class FocusSquare: SCNNode {
     private let animationDuration = 0.7
 
     // Color of the focus square
-    private let focusSquareColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) // base yellow
-    private let focusSquareColorLight = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1) // light yellow
+    private let focusSquareColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1) // base yellow
+    private let focusSquareColorLight = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1) // light yellow
 
     // For scale adapdation based on the camera distance, see the `scaleBasedOnDistance(camera:)` method.
     /////////////////////////////////////////////////

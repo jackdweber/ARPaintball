@@ -14,21 +14,26 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     @IBOutlet private weak var moveImage: UIImageView?
     @IBOutlet private weak var messageView: UIVisualEffectView?
     @IBOutlet private weak var messageLabel: UILabel?
-
+    @IBOutlet weak var guessButton: UIBarButtonItem!
+    
     private weak var terrain: SCNNode?
     private var planes: [UUID: SCNNode] = [UUID: SCNNode]()
+    
+    var terrainNode = TerrainNode(minLat: 50.044660402821592, maxLat: 50.120873988090956,
+                                      minLon: -122.99017089272466, maxLon: -122.86824490727534)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guessButton.isEnabled = false
 
-        arView!.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         arView!.session.delegate = self
         arView!.delegate = self
         if let camera = arView?.pointOfView?.camera {
             camera.wantsHDR = true
             camera.wantsExposureAdaptation = true
         }
-
+        
         arView!.isUserInteractionEnabled = false
         setupGestures()
     }
@@ -77,12 +82,11 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         arView?.debugOptions = []
 
         self.placeButton?.isHidden = true
+        self.messageLabel?.text = "Loading terrain..."
     }
 
     private func insert(on plane: SCNNode, from hitResult: ARHitTestResult) {
         //Set up initial terrain and materials
-        let terrainNode = TerrainNode(minLat: 50.044660402821592, maxLat: 50.120873988090956,
-                                      minLon: -122.99017089272466, maxLon: -122.86824490727534)
 
         //Note: Again, you don't have to do this loading in-scene. If you know the area of the node to be fetched, you can
         //do this in the background while AR plane detection is still working so it is ready by the time
@@ -102,7 +106,9 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
 
         terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: 14, progress: { _, _ in }, completion: { image in
             NSLog("Texture load complete")
-            terrainNode.geometry?.materials[4].diffuse.contents = image
+            self.terrainNode.geometry?.materials[4].diffuse.contents = image
+            self.messageView?.isHidden = true
+            self.guessButton.isEnabled = true
         })
 
         arView!.isUserInteractionEnabled = true
@@ -171,7 +177,6 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
             DispatchQueue.main.async {
                 self.terrain?.removeFromParentNode()
                 self.moveImage?.isHidden = false
-                self.arView?.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
             }
         }
     }
@@ -263,7 +268,6 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
 
     private func setMessage(_ message: String) {
         self.messageLabel?.text = message
-        self.messageView?.isHidden = message.isEmpty
     }
 
 
@@ -354,7 +358,6 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         configuration.isLightEstimationEnabled = true
 
         arView?.session.run(configuration, options: [.removeExistingAnchors])
-        arView?.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         arView?.isUserInteractionEnabled = false
         placeButton?.isHidden = true
         moveImage?.isHidden = false
