@@ -1,0 +1,32 @@
+PODS:
+  - AppAuth (0.91.0)
+  - HydraAsync (1.0.2)
+  - OktaAuth (1.0.0):
+    - AppAuth (~> 0.91.0)
+    - HydraAsync (~> 1.0.1)
+    - OktaJWT (~> 1.0.0)
+    - Vinculum (~> 0.2.0)
+  - OktaJWT (1.0.0)
+  - Vinculum (0.2.0)
+
+DEPENDENCIES:
+  - OktaAuth
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AppAuth
+    - HydraAsync
+    - OktaAuth
+    - OktaJWT
+    - Vinculum
+
+SPEC CHECKSUMS:
+  AppAuth: 3e0dc9c00ef333dc62064e4830aa89b597ae8d2f
+  HydraAsync: ed694146c649474ea44b3f40e04fe2b4362fb1e9
+  OktaAuth: df4e39a246c570a28865fed12acc84e011aba008
+  OktaJWT: 4e03aee34aed9b0c5955c3bb19b3c11da8f4d5db
+  Vinculum: cefd5ae89baf7598a8b53b447a18e6bcc8161380
+
+PODFILE CHECKSUM: f0c111a0801d4eec1e315b45ffa984250d6a030e
+
+COCOAPODS: 1.5.2
