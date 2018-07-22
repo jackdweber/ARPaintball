@@ -435,9 +435,11 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     var randomOrder: [Int] = []
     var timer: Timer!
     var timerCount = 5
+    let games = Games()
     
     @IBAction func guessButtonIsPressed(_ sender: UIBarButtonItem) {
-        initializeModal(names: ["Kansas City", "New Orleans", "Chicago", "Springfield"])
+        chooserLabel.text = ""
+        initializeModal()
     }
     
     @IBAction func choice1ButtonPressed(_ sender: UIButton) {
@@ -448,15 +450,9 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     }
     @IBAction func choice4ButtonPressed(_ sender: UIButton) {
     }
-    private func initializeModal(names: [String]) {
+    private func initializeModal() {
         chooserModalEffectView.isHidden = false
-        randomOrder = createRandomOrder()
-        let randomizedNames = [
-            names[randomOrder[0]],
-            names[randomOrder[1]],
-            names[randomOrder[2]],
-            names[randomOrder[3]]
-        ]
+        let randomizedNames = getRandomNames()
         choice1Button.setTitle(randomizedNames[0], for: .normal)
         choice2Button.setTitle(randomizedNames[1], for: .normal)
         choice3Button.setTitle(randomizedNames[2], for: .normal)
@@ -477,18 +473,45 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         }
     }
     
-    private func createRandomOrder() -> [Int]{
-        var temp: [Int] = []
-        while temp.count < 4 {
-            var randomNumber: Int
-            repeat {
-                randomNumber = Int(arc4random_uniform(4))
-            } while temp.contains(randomNumber)
-            temp.append(randomNumber)
+//    private func createRandomOrder() -> [Int]{
+//        var temp: [Int] = []
+//        while temp.count < 4 {
+//            var randomNumber: Int
+//            repeat {
+//                randomNumber = Int(arc4random_uniform(4))
+//            } while temp.contains(randomNumber)
+//            temp.append(randomNumber)
+//        }
+//        return temp
+//    }
+    
+    private func getRandomNames() -> [String] {
+        var arrOfNames: [String] = []
+        var newName: String
+        while arrOfNames.count < 4 {
+            if let group = getGroup() {
+                repeat {
+                    newName = (group.randomElement()?.key)!
+                } while newName == cityName || arrOfNames.contains(newName)
+                arrOfNames.append(newName)
+            }
         }
-        return temp
+        arrOfNames.append(cityName)
+        return arrOfNames.shuffled()
     }
     
+    private func getGroup() -> [String: (Double, Double, Double, Double)]? {
+        for group in games.library {
+            if (group[(group.first?.key)!]?.contains(where: { (arg0) -> Bool in
+                
+                let (key, (_, _, _, _)) = arg0
+                return key == cityName
+            }   ))! {
+                return group[(group.first?.key)!]
+            }
+        }
+        return nil
+    }
 }
 
 fileprivate extension ARSCNView {
