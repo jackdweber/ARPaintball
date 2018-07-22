@@ -121,7 +121,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
             self.messageLabel?.text = "Loading textures..."
         })
 
-        terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: (hd ? 16 : 15), progress: { progress, total in
+        terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: (hd ? 17 : 15), progress: { progress, total in
             self.progressView.progress = progress
         }, completion: { image in
             NSLog("Texture load complete")
