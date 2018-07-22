@@ -61,7 +61,7 @@ class GameTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(UserDefaults.standard.bool(forKey: "multi")) {
             if let multivc = segue.destination as? MultiPlayTableViewController, let payload = sender as? (String, (Double, Double, Double, Double)) {
-                let session = MCSession(peer: peerid, securityIdentity: nil, encryptionPreference: .none)
+                let session = MCSession(peer: MCPeerID(displayName: UIDevice.current.name), securityIdentity: nil, encryptionPreference: .none)
                 let toSend = (session, payload.0, payload.1)
                 multivc.items = toSend
                 return
