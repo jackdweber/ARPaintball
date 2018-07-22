@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="erI-O9-MIq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V1D-Co-Js4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Play!-->
+        <!--AR-->
         <scene sceneID="3Id-kf-3hg">
             <objects>
                 <viewController id="LGO-U1-K7T" customClass="DemoARViewController" customModule="Examples" sceneMemberID="viewController">
@@ -27,13 +26,13 @@
                                 </connections>
                             </arscnView>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdL-ql-asQ">
-                                <rect key="frame" x="38" y="531" width="300" height="52"/>
+                                <rect key="frame" x="37.5" y="531" width="300" height="52"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="C07-bM-q8I">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXV-CZ-oSt">
-                                            <rect key="frame" x="104" y="-3" width="93" height="58"/>
+                                            <rect key="frame" x="103.5" y="-3" width="93" height="58"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                             <state key="normal" title="Begin">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,10 +79,10 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Move iPhone" translatesAutoresizingMaskIntoConstraints="NO" id="Jhx-jZ-QaO">
-                                <rect key="frame" x="151" y="274" width="74" height="120"/>
+                                <rect key="frame" x="150.5" y="273.5" width="74" height="120"/>
                             </imageView>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i44-Pg-XsG">
-                                <rect key="frame" x="38" y="110" width="300" height="378"/>
+                                <rect key="frame" x="37.5" y="110" width="300" height="378"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AHN-X6-h2y">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="378"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
