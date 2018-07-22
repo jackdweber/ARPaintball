@@ -12,6 +12,8 @@
 		1C64C98F2103FFC1002CFE08 /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C64C98E2103FFC1002CFE08 /* GameTableViewController.swift */; };
 		1C64C991210423F1002CFE08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C64C990210423F1002CFE08 /* SettingsViewController.swift */; };
 		251D6D162103E68A00BA961A /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251D6D152103E68A00BA961A /* Okta.plist */; };
+		25E7E5A421041FE7001D623C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7E5A321041FE7001D623C /* ProfileViewController.swift */; };
+		25E7E5A721042162001D623C /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7E5A621042162001D623C /* Api.swift */; };
 		5035F2FD7BDB64B0FDD10DAC /* Pods_MapboxSceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84020DDE292950C59B1BA25A /* Pods_MapboxSceneKit.framework */; };
 		81293BEC20B4A1FB0014A17A /* MapboxSceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A436BC20A1F68500F42A53 /* MapboxSceneKit.framework */; };
 		81293BF120B4A29C0014A17A /* MapboxSceneKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 81A436BC20A1F68500F42A53 /* MapboxSceneKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -68,6 +70,8 @@
 		1C64C98E2103FFC1002CFE08 /* GameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		1C64C990210423F1002CFE08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		251D6D152103E68A00BA961A /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
+		25E7E5A321041FE7001D623C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		25E7E5A621042162001D623C /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		286F50FD55793F1D7AB065D6 /* Pods-MapboxSceneKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxSceneKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapboxSceneKit/Pods-MapboxSceneKit.release.xcconfig"; sourceTree = "<group>"; };
 		3751C161423DA9566BF415EE /* Pods-MapboxSceneKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxSceneKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapboxSceneKit/Pods-MapboxSceneKit.debug.xcconfig"; sourceTree = "<group>"; };
 		48F8BCA7E62E5ACE810E7721 /* Pods-Examples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,9 +127,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25E7E5A521042144001D623C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				25E7E5A621042162001D623C /* Api.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		81293BC720B4A1AE0014A17A /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				25E7E5A521042144001D623C /* Util */,
 				81293BD320B4A1AE0014A17A /* AppDelegate.swift */,
 				817BC08D20BDC071005A015D /* DemoARViewController.swift */,
 				1C64C98E2103FFC1002CFE08 /* GameTableViewController.swift */,
@@ -141,6 +154,7 @@
 				F44BB60220C75CBF00CE41C6 /* Examples-Bridging-Header.h */,
 				1C5A10812103F7D1008777B6 /* Games.swift */,
 				251D6D152103E68A00BA961A /* Okta.plist */,
+				25E7E5A321041FE7001D623C /* ProfileViewController.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -439,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25E7E5A721042162001D623C /* Api.swift in Sources */,
 				81293BF720B4A35C0014A17A /* ProgressCompositor.swift in Sources */,
 				1C311A3A2104300D00759744 /* StartViewController.swift in Sources */,
 				8190075F20C07FAD002F23C3 /* AppDelegate.swift in Sources */,
@@ -446,6 +461,7 @@
 				1C5A10822103F7D1008777B6 /* Games.swift in Sources */,
 				817BC09020BDC413005A015D /* FocusSquare.swift in Sources */,
 				817BC08E20BDC071005A015D /* DemoARViewController.swift in Sources */,
+				25E7E5A421041FE7001D623C /* ProfileViewController.swift in Sources */,
 				1C64C98F2103FFC1002CFE08 /* GameTableViewController.swift in Sources */,
 				1C64C991210423F1002CFE08 /* SettingsViewController.swift in Sources */,
 			);
@@ -505,7 +521,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PS9CT7L6JZ;
+				DEVELOPMENT_TEAM = V487Z33HP5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -516,7 +532,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.avavricek;
+				PRODUCT_BUNDLE_IDENTIFIER = com.avavricek.suckit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Examples/Examples-Bridging-Header.h";
@@ -534,7 +550,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PS9CT7L6JZ;
+				DEVELOPMENT_TEAM = V487Z33HP5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -545,7 +561,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.avavricek;
+				PRODUCT_BUNDLE_IDENTIFIER = com.avavricek.suckit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Examples/Examples-Bridging-Header.h";
@@ -682,7 +698,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = PS9CT7L6JZ;
+				DEVELOPMENT_TEAM = V487Z33HP5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -698,7 +714,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.avavricek.mapbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.avavricek.suckitx;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -715,7 +731,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = PS9CT7L6JZ;
+				DEVELOPMENT_TEAM = V487Z33HP5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -731,7 +747,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.avavricek.mapbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.avavricek.suckitx;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
