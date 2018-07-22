@@ -25,15 +25,16 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     private var planes: [UUID: SCNNode] = [UUID: SCNNode]()
     
     //[[[-94.5979983667,39.092684077],[-94.5678816825,39.092684077],[-94.5678816825,39.1112113279],[-94.5979983667,39.1112113279],[-94.5979983667,39.092684077]]]
-    var cityCoords = (-113.776535,35.807605,-113.636832,35.878794)
+    var cityCoords = (-155.337018,19.376624,-155.244371,19.439965)
     var cityName = "Kansas City"
+    var hd = UserDefaults.standard.bool(forKey: "hd")
     var terrainNode = TerrainNode(minLat: 39.092684077, maxLat: 39.1112113279,
                                       minLon: -94.5979983667, maxLon: -94.5678816825)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityCoords = (-77.05898,38.875956,-77.008624,38.901761)
+        cityCoords = (-112.974465,37.244819,-112.944679,37.266187)
         terrainNode = TerrainNode(minLat: cityCoords.1, maxLat: cityCoords.3, minLon: cityCoords.0, maxLon: cityCoords.2)
         
         guessButton.isEnabled = false
@@ -121,7 +122,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
             self.messageLabel?.text = "Loading textures..."
         })
 
-        terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: 16, progress: { progress, total in
+        terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: (hd ? 16 : 15), progress: { progress, total in
             self.progressView.progress = progress
         }, completion: { image in
             NSLog("Texture load complete")

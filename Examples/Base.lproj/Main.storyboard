@@ -298,6 +298,7 @@
                     <navigationItem key="navigationItem" title="Game Selection" id="T1q-Hg-utr"/>
                     <connections>
                         <segue destination="LGO-U1-K7T" kind="show" identifier="startGame" id="5nC-cc-JPM"/>
+                        <segue destination="uwX-GZ-iyp" kind="show" identifier="showSettings" id="DI6-9g-U5c"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4e-N3-48Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,6 +322,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFF-w6-ll7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-71.200000000000003" y="-258.62068965517244"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="fxx-XS-Fp2">
+            <objects>
+                <viewController title="Settings" id="uwX-GZ-iyp" customClass="SettingsViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2bt-EI-JZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="98" translatesAutoresizingMaskIntoConstraints="NO" id="geO-nM-IxL">
+                                <rect key="frame" x="16" y="90" width="343" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use HD imagery?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugj-fg-opc">
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxE-Xx-lS1">
+                                        <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="toggleHD:" destination="uwX-GZ-iyp" eventType="valueChanged" id="SGu-oc-GmS"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="geO-nM-IxL" firstAttribute="leading" secondItem="2bt-EI-JZ2" secondAttribute="leadingMargin" id="NW1-8a-VOt"/>
+                            <constraint firstItem="geO-nM-IxL" firstAttribute="top" secondItem="JqZ-h3-0XO" secondAttribute="top" constant="26" id="NZv-jQ-3x2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JqZ-h3-0XO"/>
+                    </view>
+                    <connections>
+                        <outlet property="switchHD" destination="wxE-Xx-lS1" id="T4Q-3h-KPt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UNp-QT-0pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="-1030.4347826086957"/>
         </scene>
     </scenes>
     <resources>
