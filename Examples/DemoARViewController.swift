@@ -34,7 +34,6 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityCoords = (-112.974465,37.244819,-112.944679,37.266187)
         terrainNode = TerrainNode(minLat: cityCoords.1, maxLat: cityCoords.3, minLon: cityCoords.0, maxLon: cityCoords.2)
         
         guessButton.isEnabled = false
