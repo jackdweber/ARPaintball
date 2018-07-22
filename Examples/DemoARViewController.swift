@@ -437,6 +437,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     var timer: Timer!
     var timerCount = 5
     let games = Games()
+    var endInfo = EndInfo()
     
     @IBAction func guessButtonIsPressed(_ sender: UIBarButtonItem) {
         chooserLabel.text = " "
@@ -444,15 +445,19 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     }
     
     @IBAction func choice1ButtonPressed(_ sender: UIButton) {
+        endInfo.choosen = sender.title(for: .normal)
         alertOutcome(didWin: sender.title(for: .normal) == cityName, message: nil)
     }
     @IBAction func choice2ButtonPressed(_ sender: UIButton) {
+        endInfo.choosen = sender.title(for: .normal)
         alertOutcome(didWin: sender.title(for: .normal) == cityName, message: nil)
     }
     @IBAction func choice3ButtonPressed(_ sender: UIButton) {
+        endInfo.choosen = sender.title(for: .normal)
         alertOutcome(didWin: sender.title(for: .normal) == cityName, message: nil)
     }
     @IBAction func choice4ButtonPressed(_ sender: UIButton) {
+        endInfo.choosen = sender.title(for: .normal)
         alertOutcome(didWin: sender.title(for: .normal) == cityName, message: nil)
     }
     
@@ -492,7 +497,10 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
             }
         }
         arrOfNames.append(cityName)
-        return arrOfNames.shuffled()
+        while arrOfNames.firstIndex(of: cityName) == arrOfNames.count - 1 {
+            arrOfNames = arrOfNames.shuffled()
+        }
+        return arrOfNames
     }
     
     private func getGroup() -> [String: (Double, Double, Double, Double)]? {
@@ -510,6 +518,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     
     private func alertOutcome(didWin: Bool, message: String?) {
         chooserModalEffectView.isHidden = true
+        timer.invalidate()
         let title = didWin ? "😁🎉👍" : "💩"
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default) { (UIAlertAction) in
