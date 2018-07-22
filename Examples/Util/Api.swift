@@ -27,3 +27,47 @@ func register(password: String, onSuccess: @escaping (String) -> Void ) {
         onSuccess(profile["login"]!!)
     }.resume()
 }
+
+func updateUser(_ userUpdate: UserUpdate, onComplete: @escaping () -> Void) {
+    guard let url = URL(string: "\(baseUrl)/user/update") else {
+        print("Error: cannot create update URL")
+        onComplete()
+        return
+    }
+    
+    let session = URLSession(configuration: .default)
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+    guard let httpBody = try? JSONSerialization.data(withJSONObject: userUpdate.dictionary, options: []) else {
+        print("Could not serialize user update to JSON")
+        onComplete()
+        return
+    }
+    request.httpBody = httpBody
+    session.dataTask(with: request) { (data, response, error) in
+        guard error == nil else {
+            onComplete()
+            return
+        }
+        
+        print("Successfully updated user")
+        onComplete()
+    }
+}
+
+class UserUpdate {
+    let email: String
+    let oldNickName: String
+    let newNickName: String?
+    
+    required init(email: String, oldNickName: String, newNickName: String? = nil) {
+        self.email = email
+        self.oldNickName = oldNickName
+        self.newNickName = newNickName
+    }
+    
+    var dictionary: [String: String?] {
+        return ["email": email, "oldNickName": oldNickName, "newNickName": newNickName]
+    }
+}
