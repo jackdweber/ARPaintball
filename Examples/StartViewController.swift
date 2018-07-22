@@ -10,7 +10,19 @@ import UIKit
 import OktaAuth
 
 class StartViewController: UIViewController {
-    override func viewDidAppear(_ animated: Bool) {
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        startButton.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        startButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        startButton.layer.cornerRadius = 5
+        if let data = try? Data(contentsOf: URL(string: "https://cdn-images-1.medium.com/max/672/1*hJdmqVuL79jo8ly7_TvI0Q.png")!) {
+            imageView.image = UIImage(data: data)
+        }
+        // Do any additional setup after loading the view.
+
         guard !OktaAuth.isAuthenticated() else { return }
         
         let password = generatePassword()
@@ -25,6 +37,7 @@ class StartViewController: UIViewController {
                 }
         }
     }
+
     
     private func generatePassword() -> String {
         let passwordCharacters = Array("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")

@@ -19,7 +19,7 @@ class GameTableViewController: UITableViewController {
         let settingsButton = UIButton(type: .infoLight)
         settingsButton.addTarget(self, action: #selector(launchSettings), for: UIControlEvents.touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: settingsButton)
-
+        tableView.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
