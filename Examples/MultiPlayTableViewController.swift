@@ -13,7 +13,6 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         if state == MCSessionState.connected {
-            print("Started")
             performSegue(withIdentifier: "showMultiStart", sender: false)
         }
     }
