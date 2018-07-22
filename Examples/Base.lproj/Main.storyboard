@@ -210,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2m-U8-61f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="-259"/>
+            <point key="canvasLocation" x="3706" y="-259"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="fgS-rb-KhM">
@@ -322,6 +322,7 @@
                     <connections>
                         <segue destination="LGO-U1-K7T" kind="show" identifier="startGame" id="5nC-cc-JPM"/>
                         <segue destination="uwX-GZ-iyp" kind="show" identifier="showSettings" id="DI6-9g-U5c"/>
+                        <segue destination="gOc-MY-ecc" kind="show" identifier="showMultiSelect" id="f2M-3F-dne"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4e-N3-48Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -371,24 +372,88 @@
                                     </switch>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="157" translatesAutoresizingMaskIntoConstraints="NO" id="ANj-GO-UEm">
+                                <rect key="frame" x="16" y="178" width="343" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiplayer?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kh-5e-yoH">
+                                        <rect key="frame" x="0.0" y="0.0" width="137" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cy9-YY-S2v">
+                                        <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="toggleHD:" destination="uwX-GZ-iyp" eventType="valueChanged" id="b8n-Ub-6sZ"/>
+                                            <action selector="toggleMultiplay:" destination="uwX-GZ-iyp" eventType="valueChanged" id="RmX-dO-NdV"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="geO-nM-IxL" firstAttribute="leading" secondItem="2bt-EI-JZ2" secondAttribute="leadingMargin" id="NW1-8a-VOt"/>
                             <constraint firstItem="geO-nM-IxL" firstAttribute="top" secondItem="JqZ-h3-0XO" secondAttribute="top" constant="26" id="NZv-jQ-3x2"/>
+                            <constraint firstItem="ANj-GO-UEm" firstAttribute="top" secondItem="geO-nM-IxL" secondAttribute="bottom" constant="33" id="cdE-bv-ggV"/>
+                            <constraint firstItem="ANj-GO-UEm" firstAttribute="leading" secondItem="geO-nM-IxL" secondAttribute="leading" id="uAJ-hm-3sk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JqZ-h3-0XO"/>
                     </view>
                     <connections>
+                        <outlet property="multiplaySwitch" destination="Cy9-YY-S2v" id="eg6-AS-HNx"/>
                         <outlet property="switchHD" destination="wxE-Xx-lS1" id="T4Q-3h-KPt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNp-QT-0pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="-1030.4347826086957"/>
+            <point key="canvasLocation" x="1764" y="-1030.7881773399015"/>
+        </scene>
+        <!--Multi Play Table View Controller-->
+        <scene sceneID="NhW-7r-7Dv">
+            <objects>
+                <tableViewController id="gOc-MY-ecc" customClass="MultiPlayTableViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D8w-9d-5Ls">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeerCell" textLabel="UL8-OK-qmv" style="IBUITableViewCellStyleDefault" id="jT4-zj-nax">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jT4-zj-nax" id="j2a-px-0ny">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UL8-OK-qmv">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gOc-MY-ecc" id="ocl-d4-V75"/>
+                            <outlet property="delegate" destination="gOc-MY-ecc" id="saD-UB-EkI"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="LGO-U1-K7T" kind="show" identifier="showMultiStart" id="i53-HU-Nrp"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jd8-cY-zjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2746" y="-654"/>
         </scene>
     </scenes>
     <resources>
         <image name="Move iPhone" width="74" height="120"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="i53-HU-Nrp"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -11,16 +11,22 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var switchHD: UISwitch!
+    @IBOutlet weak var multiplaySwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         switchHD.isOn = UserDefaults.standard.bool(forKey: "hd")
+        multiplaySwitch.isOn = UserDefaults.standard.bool(forKey: "multi")
         // Do any additional setup after loading the view.
     }
     
     @IBAction func toggleHD(_ sender: Any) {
         let current = UserDefaults.standard.bool(forKey: "hd")
         UserDefaults.standard.set(!current, forKey: "hd")
+    }
+    @IBAction func toggleMultiplay(_ sender: Any) {
+        let current = UserDefaults.standard.bool(forKey: "multi")
+        UserDefaults.standard.set(!current, forKey: "multi")
     }
     
     /*

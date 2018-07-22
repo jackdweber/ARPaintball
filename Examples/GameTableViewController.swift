@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class GameTableViewController: UITableViewController {
     
@@ -45,6 +46,10 @@ class GameTableViewController: UITableViewController {
         guard let coords = random?.value, let name = random?.key else {
             return
         }
+        if UserDefaults.standard.bool(forKey: "multi") == true {
+            performSegue(withIdentifier: "showMultiSelect", sender: (name, coords))
+            return
+        }
         performSegue(withIdentifier: "startGame", sender: (name, coords))
     }
 
@@ -54,6 +59,15 @@ class GameTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(UserDefaults.standard.bool(forKey: "multi")) {
+            if let multivc = segue.destination as? MultiPlayTableViewController, let payload = sender as? (String, (Double, Double, Double, Double)) {
+                let session = MCSession(peer: MCPeerID(displayName: UIDevice.current.name), securityIdentity: nil, encryptionPreference: .none)
+                let toSend = (session, payload.0, payload.1)
+                multivc.items = toSend
+                return
+            }
+            return
+        }
         guard let arvc = segue.destination as? DemoARViewController, let payload = sender as? (String, (Double, Double, Double, Double)) else {
             return
         }

@@ -13,6 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             UserDefaults.standard.setValue(false, forKey: "hd")
         }
+        
+        if let hd = UserDefaults.standard.object(forKey: "multi") {
+            
+        } else {
+            UserDefaults.standard.set(false, forKey: "multi")
+        }
         return true
     }
     
