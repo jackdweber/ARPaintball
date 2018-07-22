@@ -21,7 +21,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
                 cityCoords = (coords[0], coords[1], coords[2], coords[3])
                 placeButton?.isEnabled = true
             } else {
-                
+                print("👨‍👧‍👦 here???")
             }
         } else {
             print("👨‍👧‍👦not valid json")
@@ -78,7 +78,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         
         if let session = mcSession {
             var multi = true
-            placeButton?.isEnabled = false
+            placeButton?.isEnabled = host
             session.delegate = self
             if host {
                 var dataArray = [Double]()

@@ -12,9 +12,12 @@ import MultipeerConnectivity
 class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+        print(state.rawValue)
         if state == MCSessionState.connected {
-            print("Started")
-            performSegue(withIdentifier: "showMultiStart", sender: false)
+            if state == MCSessionState.connected {
+                performSegue(withIdentifier: "showMultiStart", sender: false)
+            }
+            
         }
     }
     
@@ -38,13 +41,14 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
     
     var items: (MCSession, String, (Double, Double, Double, Double))!
     var peers: [MCPeerID] = []
-    let browser = MCNearbyServiceBrowser(peer: MCPeerID(displayName: UIDevice.current.name), serviceType: "ARGG")
-    let advertiser = MCNearbyServiceAdvertiser(peer: MCPeerID(displayName: UIDevice.current.name), discoveryInfo: nil, serviceType: "ARGG")
+    let browser = MCNearbyServiceBrowser(peer: peerid, serviceType: "ARGG")
+    let advertiser = MCNearbyServiceAdvertiser(peer: peerid, discoveryInfo: nil, serviceType: "ARGG")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         browser.delegate = self
+        advertiser.delegate = self
         items.0.delegate = self
         
         let alert = UIAlertController(title: "Select", message: "Would you like to join or host?", preferredStyle: .alert)
@@ -79,6 +83,7 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         invitationHandler(true, items.0)
+        print("here")
         performSegue(withIdentifier: "showMultiStart", sender: true)
     }
     

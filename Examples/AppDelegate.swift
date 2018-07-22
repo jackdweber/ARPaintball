@@ -1,5 +1,8 @@
 import UIKit
 import OktaAuth
+import MultipeerConnectivity
+
+let peerid = MCPeerID(displayName: UIDevice.current.name)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
