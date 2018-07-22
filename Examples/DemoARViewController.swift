@@ -444,16 +444,16 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     }
     
     @IBAction func choice1ButtonPressed(_ sender: UIButton) {
-        alertOutcome(didWin: sender.title(for: .normal) == cityName)
+        alertOutcome(didWin: sender.title(for: .normal) == cityName, message: nil)
     }
     @IBAction func choice2ButtonPressed(_ sender: UIButton) {
-        alertOutcome(didWin: sender.title(for: .normal) == cityName)
+        alertOutcome(didWin: sender.title(for: .normal) == cityName, message: nil)
     }
     @IBAction func choice3ButtonPressed(_ sender: UIButton) {
-        alertOutcome(didWin: sender.title(for: .normal) == cityName)
+        alertOutcome(didWin: sender.title(for: .normal) == cityName, message: nil)
     }
     @IBAction func choice4ButtonPressed(_ sender: UIButton) {
-        alertOutcome(didWin: sender.title(for: .normal) == cityName)
+        alertOutcome(didWin: sender.title(for: .normal) == cityName, message: nil)
     }
     
     private func initializeModal() {
@@ -475,6 +475,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         if timerCount != 0 {
             timerCount -= 1
         } else {
+            alertOutcome(didWin: false, message: "Time ran out")
             timer.invalidate()
         }
     }
@@ -507,9 +508,9 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         return nil
     }
     
-    private func alertOutcome(didWin: Bool) {
+    private func alertOutcome(didWin: Bool, message: String?) {
         chooserModalEffectView.isHidden = true
-        let title = didWin ? "😁🎉👍" : "😦"
+        let title = didWin ? "😁🎉👍" : "💩"
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default) { (UIAlertAction) in
             self.navigationController?.popViewController(animated: true)
