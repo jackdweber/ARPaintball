@@ -10,16 +10,25 @@ import UIKit
 
 class GameTableViewController: UITableViewController {
     
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
+    
     let games = Games()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let settingsButton = UIButton(type: .infoLight)
+        settingsButton.addTarget(self, action: #selector(launchSettings), for: UIControlEvents.touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: settingsButton)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func launchSettings() {
+        performSegue(withIdentifier: "showSettings", sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
