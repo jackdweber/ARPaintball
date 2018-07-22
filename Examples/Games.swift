@@ -6,9 +6,10 @@
 //  Copyright © 2018 MapBox. All rights reserved.
 //
 struct Games {
-    private let library: [[String: [String: (Double, Double, Double, Double)]]] = [["US Cities":
-        ["Kansas City": (-94.5979983667, 39.092684077, -94.5678816825, 39.1112113279)]
+    let library: [[String: [String: (Double, Double, Double, Double)]]] = [["US Cities":
+        ["Kansas City": (-94.5979983667, 39.092684077, -94.5678816825, 39.1112113279)
+        ,"St. Louis": (-90.205954,38.616596,-90.179346,38.63403)]
         ],["National Parks":
-            ["Grand Canyon": (-113.765091,35.659519,-113.210661,36.008892)]
+            ["Grand Canyon": (-113.776535,35.807605,-113.636832,35.878794)]
         ]]
 }

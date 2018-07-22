@@ -15,12 +15,14 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     @IBOutlet private weak var messageView: UIVisualEffectView?
     @IBOutlet private weak var messageLabel: UILabel?
     @IBOutlet weak var guessButton: UIBarButtonItem!
+    @IBOutlet weak var progressView: UIProgressView!
+    
     
     private weak var terrain: SCNNode?
     private var planes: [UUID: SCNNode] = [UUID: SCNNode]()
     
     //[[[-94.5979983667,39.092684077],[-94.5678816825,39.092684077],[-94.5678816825,39.1112113279],[-94.5979983667,39.1112113279],[-94.5979983667,39.092684077]]]
-    var cityCoords = (-113.765091,35.659519,-113.210661,36.008892)
+    var cityCoords = (-113.776535,35.807605,-113.636832,35.878794)
     var cityName = "Kansas City"
     var terrainNode = TerrainNode(minLat: 39.092684077, maxLat: 39.1112113279,
                                       minLon: -94.5979983667, maxLon: -94.5678816825)
@@ -28,9 +30,11 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cityCoords = (-112.723314,36.216808,-112.661345,36.253639)
         terrainNode = TerrainNode(minLat: cityCoords.1, maxLat: cityCoords.3, minLon: cityCoords.0, maxLon: cityCoords.2)
         
         guessButton.isEnabled = false
+        progressView.isHidden = true
 
         arView!.session.delegate = self
         arView!.delegate = self
@@ -88,6 +92,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
 
         self.placeButton?.isHidden = true
         self.messageLabel?.text = "Loading terrain..."
+        progressView.isHidden = false
     }
 
     private func insert(on plane: SCNNode, from hitResult: ARHitTestResult) {
@@ -105,11 +110,16 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         arView!.scene.rootNode.addChildNode(terrainNode)
         terrain = terrainNode
 
-        terrainNode.fetchTerrainHeights(minWallHeight: 50.0, enableDynamicShadows: true, progress: { _, _ in }, completion: {
+        terrainNode.fetchTerrainHeights(minWallHeight: 50.0, enableDynamicShadows: true, progress: { progress, total in
+            self.progressView.progress = progress
+        }, completion: {
             NSLog("Terrain load complete")
+            self.messageLabel?.text = "Loading textures..."
         })
 
-        terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: 17, progress: { _, _ in }, completion: { image in
+        terrainNode.fetchTerrainTexture("mapbox/satellite-v9", zoom: 16, progress: { progress, total in
+            self.progressView.progress = progress
+        }, completion: { image in
             NSLog("Texture load complete")
             self.terrainNode.geometry?.materials[4].diffuse.contents = image
             self.messageView?.isHidden = true

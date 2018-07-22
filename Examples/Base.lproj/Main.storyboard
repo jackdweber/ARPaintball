@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V1D-Co-Js4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--AR-->
+        <!--Play!-->
         <scene sceneID="3Id-kf-3hg">
             <objects>
                 <viewController id="LGO-U1-K7T" customClass="DemoARViewController" customModule="Examples" sceneMemberID="viewController">
@@ -46,9 +46,18 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vwp-al-XyO">
+                                            <rect key="frame" x="5" y="46" width="290" height="4"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="FI2-C0-QLA"/>
+                                            </constraints>
+                                        </progressView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="vwp-al-XyO" secondAttribute="trailing" constant="5" id="5vq-Ad-DMe"/>
+                                        <constraint firstAttribute="bottom" secondItem="vwp-al-XyO" secondAttribute="bottom" constant="2" id="BgH-lT-8P7"/>
                                         <constraint firstItem="K26-fL-DQS" firstAttribute="leading" secondItem="C07-bM-q8I" secondAttribute="leadingMargin" id="MqD-sE-Qwn"/>
+                                        <constraint firstItem="vwp-al-XyO" firstAttribute="leading" secondItem="C07-bM-q8I" secondAttribute="leading" constant="5" id="N1Y-Tv-mvR"/>
                                         <constraint firstItem="K26-fL-DQS" firstAttribute="trailing" secondItem="C07-bM-q8I" secondAttribute="trailingMargin" id="TcY-w6-n7a"/>
                                         <constraint firstItem="K26-fL-DQS" firstAttribute="bottom" secondItem="C07-bM-q8I" secondAttribute="bottomMargin" id="Vl5-uX-0bf"/>
                                         <constraint firstItem="eXV-CZ-oSt" firstAttribute="centerY" secondItem="K26-fL-DQS" secondAttribute="centerY" id="WFQ-d3-Z9G"/>
@@ -85,7 +94,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GGZ-Ea-BK9"/>
                     </view>
-                    <navigationItem key="navigationItem" title="AR" id="WvQ-IQ-jj7">
+                    <navigationItem key="navigationItem" title="Play!" id="WvQ-IQ-jj7">
                         <barButtonItem key="rightBarButtonItem" title="Guess" id="3yZ-bF-N9d"/>
                     </navigationItem>
                     <connections>
@@ -95,6 +104,7 @@
                         <outlet property="messageView" destination="bdL-ql-asQ" id="c2c-4V-eZO"/>
                         <outlet property="moveImage" destination="Jhx-jZ-QaO" id="BFd-pG-DJN"/>
                         <outlet property="placeButton" destination="eXV-CZ-oSt" id="1iq-5O-4Fq"/>
+                        <outlet property="progressView" destination="vwp-al-XyO" id="RZs-XV-gEm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2m-U8-61f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -128,11 +138,19 @@
                                     <segue destination="ITd-vb-gEK" kind="show" id="K87-h9-XCb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR Geo Guesser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5h-76-pWa">
+                                <rect key="frame" x="33" y="122" width="309" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qQu-3B-op6" firstAttribute="top" secondItem="FqK-RA-sOY" secondAttribute="bottom" constant="66" id="Eya-ap-Xub"/>
                             <constraint firstItem="qQu-3B-op6" firstAttribute="centerX" secondItem="FqK-RA-sOY" secondAttribute="centerX" id="LAO-GD-Uam"/>
+                            <constraint firstItem="w5h-76-pWa" firstAttribute="top" secondItem="WD6-xb-D34" secondAttribute="top" constant="58" id="Ruu-6G-Hnb"/>
+                            <constraint firstItem="w5h-76-pWa" firstAttribute="centerX" secondItem="FqK-RA-sOY" secondAttribute="centerX" id="hWM-fd-ZqY"/>
                             <constraint firstItem="FqK-RA-sOY" firstAttribute="top" secondItem="WD6-xb-D34" secondAttribute="top" constant="168" id="l2N-f1-qzA"/>
                             <constraint firstItem="FqK-RA-sOY" firstAttribute="centerX" secondItem="Kwr-hB-ZF0" secondAttribute="centerX" id="rUR-tr-YIg"/>
                         </constraints>
@@ -147,18 +165,27 @@
         <!--Game Selection-->
         <scene sceneID="r72-q9-p9n">
             <objects>
-                <tableViewController id="ITd-vb-gEK" sceneMemberID="viewController">
+                <tableViewController id="ITd-vb-gEK" customClass="GameTableViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ua9-X6-EbH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UNf-gA-yOk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GameCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" textLabel="kMo-wu-1i7" style="IBUITableViewCellStyleDefault" id="UNf-gA-yOk">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UNf-gA-yOk" id="ms3-0R-6lq">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kMo-wu-1i7">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -168,6 +195,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Game Selection" id="T1q-Hg-utr"/>
+                    <connections>
+                        <segue destination="LGO-U1-K7T" kind="show" identifier="startGame" id="5nC-cc-JPM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4e-N3-48Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
