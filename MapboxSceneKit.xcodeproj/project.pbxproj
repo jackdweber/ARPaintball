@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C311A3A2104300D00759744 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C311A392104300D00759744 /* StartViewController.swift */; };
 		1C5A10822103F7D1008777B6 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5A10812103F7D1008777B6 /* Games.swift */; };
 		1C64C98F2103FFC1002CFE08 /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C64C98E2103FFC1002CFE08 /* GameTableViewController.swift */; };
 		251D6D162103E68A00BA961A /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251D6D152103E68A00BA961A /* Okta.plist */; };
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C311A392104300D00759744 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		1C5A10812103F7D1008777B6 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		1C64C98E2103FFC1002CFE08 /* GameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		251D6D152103E68A00BA961A /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				81293BD320B4A1AE0014A17A /* AppDelegate.swift */,
 				817BC08D20BDC071005A015D /* DemoARViewController.swift */,
 				1C64C98E2103FFC1002CFE08 /* GameTableViewController.swift */,
+				1C311A392104300D00759744 /* StartViewController.swift */,
 				817BC08F20BDC413005A015D /* FocusSquare.swift */,
 				81293BCB20B4A1AE0014A17A /* ProgressCompositor.swift */,
 				817BC09120BDC435005A015D /* SCNExtensions.swift */,
@@ -434,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81293BF720B4A35C0014A17A /* ProgressCompositor.swift in Sources */,
+				1C311A3A2104300D00759744 /* StartViewController.swift in Sources */,
 				8190075F20C07FAD002F23C3 /* AppDelegate.swift in Sources */,
 				817BC09220BDC435005A015D /* SCNExtensions.swift in Sources */,
 				1C5A10822103F7D1008777B6 /* Games.swift in Sources */,
