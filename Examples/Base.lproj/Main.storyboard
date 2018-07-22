@@ -215,7 +215,7 @@
         <!--Welcome-->
         <scene sceneID="fgS-rb-KhM">
             <objects>
-                <viewController id="0iS-V8-neA" sceneMemberID="viewController">
+                <viewController id="0iS-V8-neA" customClass="StartViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kwr-hB-ZF0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +258,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WD6-xb-D34"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="Be9-b5-MDQ"/>
+                    <navigationItem key="navigationItem" title="Welcome" id="Be9-b5-MDQ">
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="YT4-Dg-SMW">
+                            <connections>
+                                <segue destination="rNn-D5-sPz" kind="show" id="ohI-Xg-7ak"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5t-j7-Z7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -305,6 +311,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4e-N3-48Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1764" y="-260"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="r6v-Gy-xQw">
+            <objects>
+                <viewController id="rNn-D5-sPz" customClass="ProfileViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y90-p7-P39">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X74-PY-KS7">
+                                <rect key="frame" x="133" y="114" width="109" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZq-L9-Qhr">
+                                <rect key="frame" x="20" y="164" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKF-0F-eQL">
+                                <rect key="frame" x="147.5" y="214" width="80" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="saveProfile:" destination="rNn-D5-sPz" eventType="touchUpInside" id="fbE-WC-y3w"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fZq-L9-Qhr" firstAttribute="top" secondItem="X74-PY-KS7" secondAttribute="bottom" constant="20" id="9mN-Dl-YWK"/>
+                            <constraint firstItem="gKF-0F-eQL" firstAttribute="top" secondItem="fZq-L9-Qhr" secondAttribute="bottom" constant="20" id="MRZ-S0-fxL"/>
+                            <constraint firstItem="Lu7-k2-TMT" firstAttribute="trailing" secondItem="fZq-L9-Qhr" secondAttribute="trailing" constant="20" id="R0n-AF-U7e"/>
+                            <constraint firstItem="fZq-L9-Qhr" firstAttribute="centerX" secondItem="Y90-p7-P39" secondAttribute="centerX" id="cdx-Qp-yv3"/>
+                            <constraint firstItem="X74-PY-KS7" firstAttribute="top" secondItem="Lu7-k2-TMT" secondAttribute="top" constant="50" id="giZ-0j-R5W"/>
+                            <constraint firstItem="X74-PY-KS7" firstAttribute="centerX" secondItem="Y90-p7-P39" secondAttribute="centerX" id="kPc-ys-keD"/>
+                            <constraint firstItem="fZq-L9-Qhr" firstAttribute="leading" secondItem="Lu7-k2-TMT" secondAttribute="leading" constant="20" id="w92-Mw-GhL"/>
+                            <constraint firstItem="gKF-0F-eQL" firstAttribute="centerX" secondItem="Y90-p7-P39" secondAttribute="centerX" id="wdE-ko-IGE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lu7-k2-TMT"/>
+                    </view>
+                    <connections>
+                        <outlet property="nickNameTextField" destination="fZq-L9-Qhr" id="jLE-O7-vze"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vcd-0Y-K3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="510"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ucl-PH-tqd">

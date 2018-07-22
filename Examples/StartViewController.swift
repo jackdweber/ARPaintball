@@ -2,29 +2,43 @@
 //  StartViewController.swift
 //  Examples
 //
-//  Created by Jack Weber on 7/21/18.
+//  Created by Devin Turner on 7/21/18.
 //  Copyright © 2018 MapBox. All rights reserved.
 //
 
 import UIKit
+import OktaAuth
 
 class StartViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func viewDidAppear(_ animated: Bool) {
+        guard !OktaAuth.isAuthenticated() else { return }
+        
+        let password = generatePassword()
+        register(password: password) { nickName in
+            OktaAuth.login(nickName, password: password)
+                .start(self)
+                .then{ _ in
+                    print("Logged in \(nickName)!")
+                }
+                .catch { error in
+                    print("Failed to login \(nickName). \(error)")
+                }
+        }
     }
     
+    private func generatePassword() -> String {
+        let passwordCharacters = Array("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+        var password = ""
+        
+        for _ in 0..<16 {
+            // generate a random index based on your array of characters count
+            let rand = arc4random_uniform(UInt32(passwordCharacters.count))
+            // append the random character to your string
+            password.append(passwordCharacters[Int(rand)])
+        }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        return password
     }
-    */
-
+    
+    
 }
