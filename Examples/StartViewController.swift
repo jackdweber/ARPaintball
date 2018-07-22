@@ -27,6 +27,9 @@ class StartViewController: UIViewController {
         
         let password = generatePassword()
         register(password: password) { nickName in
+            let defaults = UserDefaults.standard
+            defaults.set(nickName, forKey: "nickName")
+            defaults.synchronize()
             OktaAuth.login(nickName, password: password)
                 .start(self)
                 .then{ _ in
