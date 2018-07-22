@@ -24,6 +24,11 @@
 	<true/>
 	<key>MGLMapboxAccessToken</key>
 	<string>sk.eyJ1IjoiandlYnkiLCJhIjoiY2pqdnZpYTFuMTkybTNwbXJtc21ndm5sMSJ9.TSDgHfI43qMH8fg_LD633A</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>AR Viewing</string>
 	<key>UILaunchStoryboardName</key>

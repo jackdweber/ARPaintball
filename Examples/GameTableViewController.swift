@@ -13,6 +13,7 @@ class GameTableViewController: UITableViewController {
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     
     let games = Games()
+    let cheats = UserDefaults.standard.bool(forKey: "cheats")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +36,34 @@ class GameTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell") else {
             return UITableViewCell()
         }
+        if cheats {
+            cell.textLabel?.text = Array(games.getAll().keys)[indexPath.row]
+            return cell
+        }
         let title = games.library[indexPath.row].first?.key
         cell.textLabel?.text = title
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if cheats {
+            let key = Array(games.getAll().keys)[indexPath.row]
+            performSegue(withIdentifier: "startGame", sender: (key, games.getAll()[key]))
+            return
+        }
         let random = games.library[indexPath.row].first!.value.randomElement()
         guard let coords = random?.value, let name = random?.key else {
             return
         }
+        
         performSegue(withIdentifier: "startGame", sender: (name, coords))
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if cheats {
+            return games.getAll().count
+        }
         return games.library.count
     }
     

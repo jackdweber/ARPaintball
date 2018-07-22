@@ -13,6 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             UserDefaults.standard.setValue(false, forKey: "hd")
         }
+        if let hd = UserDefaults.standard.object(forKey: "cheats") {
+            
+        } else {
+            UserDefaults.standard.setValue(false, forKey: "cheats")
+        }
         return true
     }
     

@@ -20,4 +20,14 @@ struct Games {
              "Hawaii Volcanos": (-155.337018,19.376624,-155.244371,19.439965),
              "Zion": (-112.974465,37.244819,-112.944679,37.266187)]
         ]]
+    
+    func getAll() -> [String: (Double, Double, Double, Double)] {
+        var ret = [String: (Double, Double, Double, Double)]()
+        for game in library {
+            for item in game.first!.value.enumerated() {
+                ret.updateValue(item.element.value, forKey: item.element.key)
+            }
+        }
+        return ret
+    }
 }
