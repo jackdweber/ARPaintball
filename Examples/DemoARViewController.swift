@@ -131,6 +131,28 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         })
 
         arView!.isUserInteractionEnabled = true
+        startSpinningNode(longDelay: false)
+    }
+    
+    private func startSpinningNode(longDelay: Bool) {
+        let sec = longDelay ? 5 : 1
+        perform(#selector(spinIt), with: nil, afterDelay: TimeInterval(sec))
+    }
+    
+    @objc private func spinIt() {
+        guard let terrain = terrain else {
+            return
+        }
+        let action = SCNAction.rotateBy(x: 0, y: CGFloat(2 * Double.pi), z: 0, duration: 60)
+        let repAction = SCNAction.repeat(action, count: 50)
+        terrain.runAction(repAction, forKey: "myrotate")
+    }
+    
+    private func stopSpinningNode() {
+        guard let terrain = terrain else {
+            return
+        }
+        terrain.removeAction(forKey: "myrotate")
     }
 
     private func defaultMaterials() -> [SCNMaterial] {
@@ -315,7 +337,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         guard let terrain = terrain else {
             return
         }
-
+        stopSpinningNode()
         let point = gesture.location(in: gesture.view!)
         if let result = arView?.smartHitTest(point, infinitePlane: true) {
             if let lastDragResult = lastDragResult {
@@ -328,6 +350,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         }
 
         if gesture.state == .ended {
+            startSpinningNode(longDelay: true)
             self.lastDragResult = nil
         }
     }
@@ -336,6 +359,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         guard let terrain = terrain else {
             return
         }
+        stopSpinningNode()
         var normalized = (terrain.eulerAngles.y - Float(gesture.rotation)).truncatingRemainder(dividingBy: 2 * .pi)
         normalized = (normalized + 2 * .pi).truncatingRemainder(dividingBy: 2 * .pi)
         if normalized > .pi {
@@ -343,6 +367,9 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         }
         terrain.eulerAngles.y = normalized
         gesture.rotation = 0
+        if gesture.state == .ended {
+            startSpinningNode(longDelay: true)
+        }
     }
 
     private var startScale: Float?
@@ -350,6 +377,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         guard let terrain = terrain else {
             return
         }
+        stopSpinningNode()
         if gesture.state == UIGestureRecognizerState.began {
             startScale = terrain.scale.x
         }
@@ -359,6 +387,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         let newScale: Float = startScale * Float(gesture.scale)
         terrain.scale = SCNVector3(newScale, newScale, newScale)
         if gesture.state == .ended {
+            startSpinningNode(longDelay: true)
             self.startScale = nil
         }
     }
