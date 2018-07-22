@@ -25,6 +25,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     private var planes: [UUID: SCNNode] = [UUID: SCNNode]()
     
     //[[[-94.5979983667,39.092684077],[-94.5678816825,39.092684077],[-94.5678816825,39.1112113279],[-94.5979983667,39.1112113279],[-94.5979983667,39.092684077]]]
+    let spinningLongDelay = 10
     var cityCoords = (-155.337018,19.376624,-155.244371,19.439965)
     var cityName = "Kansas City"
     var hd = UserDefaults.standard.bool(forKey: "hd")
@@ -135,7 +136,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     }
     
     private func startSpinningNode(longDelay: Bool) {
-        let sec = longDelay ? 5 : 1
+        let sec = longDelay ? spinningLongDelay : 1
         perform(#selector(spinIt), with: nil, afterDelay: TimeInterval(sec))
     }
     
@@ -438,18 +439,23 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     let games = Games()
     
     @IBAction func guessButtonIsPressed(_ sender: UIBarButtonItem) {
-        chooserLabel.text = ""
+        chooserLabel.text = " "
         initializeModal()
     }
     
     @IBAction func choice1ButtonPressed(_ sender: UIButton) {
+        alertOutcome(didWin: sender.title(for: .normal) == cityName)
     }
     @IBAction func choice2ButtonPressed(_ sender: UIButton) {
+        alertOutcome(didWin: sender.title(for: .normal) == cityName)
     }
     @IBAction func choice3ButtonPressed(_ sender: UIButton) {
+        alertOutcome(didWin: sender.title(for: .normal) == cityName)
     }
     @IBAction func choice4ButtonPressed(_ sender: UIButton) {
+        alertOutcome(didWin: sender.title(for: .normal) == cityName)
     }
+    
     private func initializeModal() {
         chooserModalEffectView.isHidden = false
         let randomizedNames = getRandomNames()
@@ -472,18 +478,6 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
             timer.invalidate()
         }
     }
-    
-//    private func createRandomOrder() -> [Int]{
-//        var temp: [Int] = []
-//        while temp.count < 4 {
-//            var randomNumber: Int
-//            repeat {
-//                randomNumber = Int(arc4random_uniform(4))
-//            } while temp.contains(randomNumber)
-//            temp.append(randomNumber)
-//        }
-//        return temp
-//    }
     
     private func getRandomNames() -> [String] {
         var arrOfNames: [String] = []
@@ -511,6 +505,17 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
             }
         }
         return nil
+    }
+    
+    private func alertOutcome(didWin: Bool) {
+        chooserModalEffectView.isHidden = true
+        let title = didWin ? "😁🎉👍" : "😦"
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default) { (UIAlertAction) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
 }
 
