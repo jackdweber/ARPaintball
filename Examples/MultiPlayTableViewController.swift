@@ -9,41 +9,18 @@
 import UIKit
 import MultipeerConnectivity
 
-class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
-    
-    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        if state == MCSessionState.connected {
-            performSegue(withIdentifier: "showMultiStart", sender: false)
-        }
-    }
-    
-    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        
-    }
-    
-    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        
-    }
-    
-    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        
-    }
-    
-    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        
-    }
-    
-    
+class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate {
     
     var items: (MCSession, String, (Double, Double, Double, Double))!
     var peers: [MCPeerID] = []
     let browser = MCNearbyServiceBrowser(peer: MCPeerID(displayName: UIDevice.current.name), serviceType: "ARGG")
+    let advertiser = MCNearbyServiceAdvertiser(peer: MCPeerID(displayName: UIDevice.current.name), discoveryInfo: nil, serviceType: "ARGG")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         browser.delegate = self
-        items.0.delegate = self
+        advertiser.delegate = self
         
         let alert = UIAlertController(title: "Select", message: "Would you like to join or host?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Join", style: .default, handler: { (_) in
@@ -52,7 +29,7 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
         }))
         alert.addAction(UIAlertAction(title: "Host", style: .default, handler: { (_) in
             print("Host")
-            
+            self.advertiser.startAdvertisingPeer()
         }))
         present(alert, animated: true, completion: nil)
         // Uncomment the following line to preserve selection between presentations
@@ -75,10 +52,8 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        invitationHandler(true, items.0)
-        performSegue(withIdentifier: "showMultiStart", sender: true)
+        print("recied")
     }
-    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -95,16 +70,6 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         browser.invitePeer(peers[indexPath.row], to: items.0, withContext: nil, timeout: 15)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let arvc = segue.destination as? DemoARViewController, let host = sender as? Bool else {
-            return
-        }
-        arvc.cityName = items.1
-        arvc.mcSession = items.0
-        arvc.cityCoords = items.2
-        arvc.host = host
     }
 
 }

@@ -3,43 +3,12 @@ import UIKit
 import SceneKit
 import ARKit
 import MapboxSceneKit
-import MultipeerConnectivity
 
 /**
  Demonstrates placing a Mapbox TerrainNode in AR. The acual Mapbox SDK logic is in the `insert` function, while the rest
  is the boilerplate code needed to start up an AR session, enable plane tracking, place objects, and support gestures.
  **/
-final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UIGestureRecognizerDelegate, MCSessionDelegate {
-    
-    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        
-    }
-    
-    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        if JSONSerialization.isValidJSONObject(data){
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []), let coords = json as? [Double] {
-                cityCoords = (coords[0], coords[1], coords[2], coords[3])
-                placeButton?.isEnabled = true
-            } else {
-                
-            }
-        } else {
-            print("👨‍👧‍👦not valid json")
-        }
-    }
-    
-    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        
-    }
-    
-    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        
-    }
-    
-    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        
-    }
-    
+final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, UIGestureRecognizerDelegate {
     @IBOutlet private weak var arView: ARSCNView?
     @IBOutlet private weak var placeButton: UIButton?
     @IBOutlet private weak var moveImage: UIImageView?
@@ -58,11 +27,6 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     //[[[-94.5979983667,39.092684077],[-94.5678816825,39.092684077],[-94.5678816825,39.1112113279],[-94.5979983667,39.1112113279],[-94.5979983667,39.092684077]]]
     var cityCoords = (-155.337018,19.376624,-155.244371,19.439965)
     var cityName = "Kansas City"
-    var mcSession: MCSession?
-    var host = false
-    var multi = false
-    var canPlay = false
-    var advertiser: MCNearbyServiceAdvertiser!
     var hd = UserDefaults.standard.bool(forKey: "hd")
     var terrainNode = TerrainNode(minLat: 39.092684077, maxLat: 39.1112113279,
                                       minLon: -94.5979983667, maxLon: -94.5678816825)
@@ -75,25 +39,6 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         guessButton.isEnabled = false
         progressView.isHidden = true
         chooserModalEffectView.isHidden = true
-        
-        if let session = mcSession {
-            var multi = true
-            placeButton?.isEnabled = false
-            session.delegate = self
-            if host {
-                var dataArray = [Double]()
-                dataArray.append(cityCoords.0)
-                dataArray.append(cityCoords.1)
-                dataArray.append(cityCoords.2)
-                dataArray.append(cityCoords.3)
-                let json = try! JSONSerialization.data(withJSONObject: dataArray, options: [])
-                do{
-                    try session.send(json, toPeers: session.connectedPeers, with: .reliable)
-                } catch {
-                    print("👨‍👧‍👦 failed to send coords")
-                }
-            }
-        }
 
         arView!.session.delegate = self
         arView!.delegate = self
