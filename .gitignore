@@ -12,3 +12,7 @@ Carthage/Build/
 Pods/
 
 MapboxSceneKit\.xcworkspace/xcuserdata/
+
+*.xcuserstate
+
+*.xcbkptlist

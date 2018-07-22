@@ -16,6 +16,9 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     @IBOutlet private weak var messageLabel: UILabel?
     @IBOutlet weak var guessButton: UIBarButtonItem!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var chooserModal: UIView!
+    @IBOutlet weak var chooserModalEffectView: UIVisualEffectView!
+    @IBOutlet weak var chooserLabel: UILabel!
     
     
     private weak var terrain: SCNNode?
@@ -35,6 +38,7 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
         
         guessButton.isEnabled = false
         progressView.isHidden = true
+        chooserModalEffectView.isHidden = true
 
         arView!.session.delegate = self
         arView!.delegate = self
@@ -391,6 +395,71 @@ final class DemoARViewController: UIViewController, ARSCNViewDelegate, ARSession
     private var session: ARSession {
         return arView!.session
     }
+    
+    //MARK: - Chooser
+    
+    @IBOutlet weak var choice1Button: UIButton!
+    @IBOutlet weak var choice2Button: UIButton!
+    @IBOutlet weak var choice3Button: UIButton!
+    @IBOutlet weak var choice4Button: UIButton!
+    
+    var randomOrder: [Int] = []
+    var timer: Timer!
+    var timerCount = 5
+    
+    @IBAction func guessButtonIsPressed(_ sender: UIBarButtonItem) {
+        initializeModal(names: ["Kansas City", "New Orleans", "Chicago", "Springfield"])
+    }
+    
+    @IBAction func choice1ButtonPressed(_ sender: UIButton) {
+    }
+    @IBAction func choice2ButtonPressed(_ sender: UIButton) {
+    }
+    @IBAction func choice3ButtonPressed(_ sender: UIButton) {
+    }
+    @IBAction func choice4ButtonPressed(_ sender: UIButton) {
+    }
+    private func initializeModal(names: [String]) {
+        chooserModalEffectView.isHidden = false
+        randomOrder = createRandomOrder()
+        let randomizedNames = [
+            names[randomOrder[0]],
+            names[randomOrder[1]],
+            names[randomOrder[2]],
+            names[randomOrder[3]]
+        ]
+        choice1Button.setTitle(randomizedNames[0], for: .normal)
+        choice2Button.setTitle(randomizedNames[1], for: .normal)
+        choice3Button.setTitle(randomizedNames[2], for: .normal)
+        choice4Button.setTitle(randomizedNames[3], for: .normal)
+        startCountdown()
+    }
+    
+    private func startCountdown() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func updateTimer() {
+        chooserLabel.text = "Time left: \(timerCount)"
+        if timerCount != 0 {
+            timerCount -= 1
+        } else {
+            timer.invalidate()
+        }
+    }
+    
+    private func createRandomOrder() -> [Int]{
+        var temp: [Int] = []
+        while temp.count < 4 {
+            var randomNumber: Int
+            repeat {
+                randomNumber = Int(arc4random_uniform(4))
+            } while temp.contains(randomNumber)
+            temp.append(randomNumber)
+        }
+        return temp
+    }
+    
 }
 
 fileprivate extension ARSCNView {
