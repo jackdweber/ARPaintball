@@ -39,6 +39,7 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
     var items: (MCSession, String, (Double, Double, Double, Double))!
     var peers: [MCPeerID] = []
     let browser = MCNearbyServiceBrowser(peer: MCPeerID(displayName: UIDevice.current.name), serviceType: "ARGG")
+    let advertiser = MCNearbyServiceAdvertiser(peer: MCPeerID(displayName: UIDevice.current.name), discoveryInfo: nil, serviceType: "ARGG")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
         }))
         alert.addAction(UIAlertAction(title: "Host", style: .default, handler: { (_) in
             print("Host")
+            self.advertiser.startAdvertisingPeer()
             
         }))
         present(alert, animated: true, completion: nil)
@@ -96,6 +98,7 @@ class MultiPlayTableViewController: UITableViewController, MCNearbyServiceBrowse
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         browser.invitePeer(peers[indexPath.row], to: items.0, withContext: nil, timeout: 15)
+        browser.stopBrowsingForPeers()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
